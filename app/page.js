@@ -18,7 +18,7 @@ export default async function Home() {
 
       <div className="px-[10%] mt-4">
         <div className="flex flex-1 gap-3">
-          {callingCategory.map((cat, i) => <Link href="#" className="bg-white border border-slate-400 px-3 py-1 text-md hover:bg-slate-300 rounded-full">{cat.catTitle}</Link>)}
+          {callingCategory.map((cat, i) => <Link key={i} href="#" className="bg-white border border-slate-400 px-3 py-1 text-md hover:bg-slate-300 rounded-full">{cat.catTitle}</Link>)}
             
         </div>
       </div>

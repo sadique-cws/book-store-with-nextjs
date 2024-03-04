@@ -23,8 +23,12 @@ const handleSubmit = async(formdata) => {
 
 }
   return (
-    <div className='flex gap-3'>
-        <div className='w-2/3'>
+    <div className='flex gap-3 flex-col'>
+        <div className='flex-1'>
+                <h2 className='text-xl font-semibold'>Manage Categories ({callingCat.length})</h2>
+        </div>
+       <div className="flex gap-3 ">
+       <div className='w-2/3'>
             <table className='border w-full'>
                 <thead>
                     <tr>
@@ -36,7 +40,7 @@ const handleSubmit = async(formdata) => {
                 </thead>
                 <tbody>
                    { callingCat.map((cat, index) => (
-                         <tr>
+                         <tr key={index}>
                             <td className='border p-2'>{index + 1}</td>
                             <td className='border p-2'>{cat.catTitle}</td>
                             <td className='border p-2'>{cat.catDesc}</td>
@@ -66,6 +70,7 @@ const handleSubmit = async(formdata) => {
                 </form>
             </div>
         </div>
+       </div>
     </div>
   )
 }
