@@ -1,3 +1,4 @@
+import { handleBookDelete } from '@/app/actions';
 import ConnectDb from '@/app/db/Connect'
 import Book from '@/app/models/Book';
 import Image from 'next/image';
@@ -31,23 +32,31 @@ const page = async () => {
                     </tr>
                 </thead>
                 <tbody>
-                   { callingBook.map((book, index) => (
-                         <tr key={index}>
-                            <td className='border p-2'>{index + 1}</td>
-                            <td className='border p-2'>{book.title}</td>
-                            <td className='border p-2'>{book.author}</td>
-                            <td className='border p-2'>{book.price} {book.discountPrice}</td>
-                            <td className='border p-2'>{book.category.catTitle}</td>
-                            <td className='border p-2'>
-                                <Image width={50} height={50} className='object-cover' src={`/books_image/${book.coverImage}`}/>
+                   { callingBook.map((book, index) => {
+                    let id = book._id;
+                    let handleDeleteWithId = handleBookDelete.bind(null, id);
 
-                            </td>
-                            <td className='border p-2'>
-                                {/* action buttons */}
-                            </td>
-                           
-                         </tr>
-                   ))
+                    return(
+                        <tr key={index}>
+                           <td className='border p-2'>{index + 1}</td>
+                           <td className='border p-2'>{book.title}</td>
+                           <td className='border p-2'>{book.author}</td>
+                           <td className='border p-2'>{book.price} {book.discountPrice}</td>
+                           <td className='border p-2'>{book.category.catTitle}</td>
+                           <td className='border p-2'>
+                               <Image width={50} height={50} className='object-cover' src={`/books_image/${book.coverImage}`}/>
+
+                           </td>
+                           <td className='border p-2'>
+                               {/* action buttons */}
+                               <form action={handleDeleteWithId} method="POST">
+                                   <input type="submit" value="delete" className='bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded' />
+                               </form>
+                           </td>
+                          
+                        </tr>
+                  )
+                   })
                   }
                 </tbody>
             </table>

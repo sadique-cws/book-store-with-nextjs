@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./admin.css";
 import AdminHeader from "@/app/components/AdminHeader";
 import Link from "next/link";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function AdminLayout({ children }) {
                 </div>
                 <div className="w-3/4">
                 {children}
+                <Toaster position="top-right"/>
                 </div>
 
         </div>
