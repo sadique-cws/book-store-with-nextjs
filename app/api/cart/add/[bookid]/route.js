@@ -12,8 +12,7 @@ export const GET = async (req, {params}) => {
     if(!book){
         return NextResponse.json({message: 'Book not found'})
     }
-
-    // let order = await Order.find({});
+    
     let token = cookies().get("token")
     let user = JWT.verify(token.value, "myproject")
 
