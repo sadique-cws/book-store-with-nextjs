@@ -6,6 +6,7 @@ import { writeFile } from 'fs/promises';
 import Book from '@/app/models/Book';
 import User from "./models/User";
 import bcrypt from "bcryptjs";
+import Address from "./models/Address";
 
 
 export const handleSubmit = async(formdata) => {
@@ -69,4 +70,17 @@ export const handleCreateAnAccount = async (formData) => {
         let data = await User.create(record);
         redirect("/");
 
+}
+
+export const handleCreateAddresses = async(formData) => {
+        let name = formData.get('name');
+        let contact = formData.get('contact');
+        let city = formData.get('city');
+        let state = formData.get('state');
+        let landmark = formData.get('landmark');
+        let pincode = formData.get('pincode');
+        let area = formData.get('area');
+
+        let record = {name, contact, city, state, landmark, pincode, area};
+        let data = await Address.create(record);
 }

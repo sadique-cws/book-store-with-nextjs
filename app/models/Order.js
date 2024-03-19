@@ -14,6 +14,11 @@ const OrderSchema = new mongoose.Schema({
     ordered: {
         type: Boolean,
         default: false
+    },
+    address: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Address",
+        default: null
     }
 });
 

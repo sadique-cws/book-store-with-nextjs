@@ -20,18 +20,19 @@ export const GET = async (req, {params}) => {
     let order;
     order = await Order.findOne({userId:user.id, ordered:false})
 
-    if(!order){
-        order = await Order.create({userId:user.id, ordered:false}) 
-    }
+   
     let orderItem;
-    orderItem = await OrderItem.findOne({userId:user.id, bookId:bookid, OrderId:order._id})
-
-    if(!orderItem){
-        orderItem = await OrderItem.create({userId:user.id, bookId:bookid, OrderId:order._id})
-    }
-    else{
-        orderItem = await OrderItem.findOneAndUpdate({userId:user.id, bookId:bookid, OrderId:order._id}, {$inc:{quantity:1}})
+    orderItem = await OrderItem.findOne({userId:user.id, bookId:bookid, OrderId:order._id});
+    if(orderItem){
+        if(orderItem.quantity > 1){
+            orderItem = await OrderItem.findOneAndUpdate({userId:user.id, bookId:bookid, OrderId:order._id}, {$inc:{quantity: -1}})
+        }
+        else{
+            orderItem = await OrderItem.findOneAndDelete({userId:user.id, bookId:bookid, OrderId:order._id})
+        }
     }
     
-    return NextResponse.json({message:"Book has been added successfully", success: true}, {status: 200});
+
+    
+    return NextResponse.json({message:"Book qty updated successfully", success: true}, {status: 200});
 }
