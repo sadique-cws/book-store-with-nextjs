@@ -26,7 +26,8 @@ export const POST = async (req) => {
 
         let tokenData = {
             id: user._id,
-            email: user.email
+            email: user.email,
+            name:user.name,
         }
 
         let token = JWT.sign(tokenData, "myproject", { expiresIn: "1h" })

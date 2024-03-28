@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Address from "./Address";
 
 
 const OrderSchema = new mongoose.Schema({
@@ -17,7 +18,7 @@ const OrderSchema = new mongoose.Schema({
     },
     address: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Address",
+        ref:Address,
         default: null
     }
 });

@@ -80,7 +80,8 @@ export const handleCreateAddresses = async(formData) => {
         let landmark = formData.get('landmark');
         let pincode = formData.get('pincode');
         let area = formData.get('area');
+        let user = formData.get('user');
 
-        let record = {name, contact, city, state, landmark, pincode, area};
+        let record = {name, contact, city, state, landmark, pincode, area, user};
         let data = await Address.create(record);
 }

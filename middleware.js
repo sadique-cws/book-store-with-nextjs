@@ -17,5 +17,5 @@ export function middleware(request){
 }
 
 export const config = {
-    matcher : ["/login", "/register", "/cart"]
+    matcher : ["/cart", "/myorder"]
 }

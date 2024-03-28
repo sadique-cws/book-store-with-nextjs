@@ -21,11 +21,10 @@ export default function AdminLayout({ children }) {
                 <div className="w-1/4">
                     <div className="flex flex-col">
                         <Link href="/admin" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Dashboard</Link>
-                        <Link href="#" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Users</Link>
+                        <Link href="/admin/users" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Users</Link>
                         <Link href="/admin/categories" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Categories</Link>
                         <Link href="/admin/books" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Books</Link>
-                        <Link href="#" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Orders</Link>
-                        <Link href="#" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Payments</Link>
+                        <Link href="/admin/orders" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Manage Orders</Link>
                         <Link href="#" className="text-black bg-slate-300 py-3 px-4 hover:bg-red-500 hover:text-white">Logout</Link>
                     </div>
                 </div>

@@ -42,11 +42,11 @@ const CartPage = () => {
     }
 
     // for total calculation
-    const totalAmount = orderItems.reduce((acc, orderItem) => {
+    const totalAmount = orderItems?.reduce((acc, orderItem) => {
         return acc + orderItem.bookId.price * orderItem.quantity;
     }, 0);
 
-    const totalDiscountAmount = orderItems.reduce((acc,orderItem) => {
+    const totalDiscountAmount = orderItems?.reduce((acc,orderItem) => {
         return acc + orderItem.bookId.discountPrice * orderItem.quantity;
     }, 0);
 
@@ -57,13 +57,14 @@ const CartPage = () => {
   return (
     <>
     <div className="flex flex-1 my-3">
-        <h1 className="text-2xl font-semibold">Your Cart ({orderItems.length})</h1>
+        <h1 className="text-2xl font-semibold">Your Cart ({orderItems?.length ?? "0"})</h1>
     </div>
     <div className='flex flex-1 gap-2'>
         <div className="w-4/6">
-            {orderItems.length < 1 && <h1 className='text-red-300 text-3xl font-sans'> Cart Empty </h1>}
+            {!orderItems && <h1 className='text-red-300 text-3xl font-sans'> Cart Empty </h1>}
 
           {
+            orderItems && 
             orderItems.map((orderItem, i) => (
                 <div key={i} className='bg-white border rounded flex p-4 shadow-md mb-3'>
                 <div className='w-2/12'>
@@ -87,11 +88,12 @@ const CartPage = () => {
 
                 </div>
             </div>
-            )
+            ) 
             )
           }
         </div>
-        <div className="w-2/6">
+        {
+            orderItems && <div className="w-2/6">
             <div className='bg-white border rounded flex p-4 shadow-md flex-col'>
                     <h2 className='font-bold border-b'>Price Details</h2>
                     <div className="flex flex-col gap-1">
@@ -123,6 +125,7 @@ const CartPage = () => {
                 </Link>
             </div>
         </div>
+        }
     </div>
     </>
   )
